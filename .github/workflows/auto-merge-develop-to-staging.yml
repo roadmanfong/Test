@@ -1,0 +1,13 @@
+name: "auto-merge-develop-to-staging"
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  forward-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: NicholasBoll/action-forward-merge-pr@v1.0.0
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          branches: develop+staging
